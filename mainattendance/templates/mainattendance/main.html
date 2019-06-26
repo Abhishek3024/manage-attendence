@@ -1,0 +1,55 @@
+{% extends 'mainattendance/basic.html' %}
+
+{% block title %} Attendance Form {% endblock %}
+
+{% block body %}
+  <div class="container my-5">
+    {% if date == None %}
+    <form method="post"> {% csrf_token %} 
+       <div class="form-group">
+        <label for="name" >Enter Date:</label>
+        <input type="date"class="form-control" id="date" name="date">
+      </div>
+      <div class="form-group">
+        <label for="batch">Select the Batch:</label>
+        <select class="form-control" id="batch" name="batch">
+          <option value="" disabled selected>Select any Batch</option>
+          {% for i in batchs %}
+            <option value="{{i.batch_id}}">{{i.batch_id}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    
+      <div><button type="submit" class="btn btn-success" >Save and Attendance</button></div>
+    {% else %}
+      
+      <button type="submit" class="btn btn-success disabled">Save and Attendance</button>
+    {% endif %}
+    </form>
+    {% if date == None %}
+      <div></div>
+    {% else %}
+      <form action="/mainattendance/start/" method="post">{% csrf_token %}
+      <h3 class="my-3">Attendance of Batch {{batch}} for {{date}}: </h3>
+      
+      <table class="table table-striped table-dark my-2">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in students %}
+          <tr>
+            <th scope="row">{{s.student_id}}</th>
+            <td>{{s.student_name}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-outline-info btn-lg btn-block">Confirm and Start</button>
+      </form>
+      {% endif %}
+  </div>
+{% endblock %}

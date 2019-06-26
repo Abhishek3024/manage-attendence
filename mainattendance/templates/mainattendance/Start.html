@@ -1,0 +1,49 @@
+{% extends 'mainattendance/basic.html' %}
+
+{% block title %} Attendance of  {% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="row my-5"> 
+      <h3 class="mx-5">{{date}}</h3>
+      <h3>{{batch}}</h3> 
+    </div>
+    <div class="row">
+      
+  {% for s in students %}
+    <div id="{{s.student_id}}" class="mb-2 mr-2">
+      
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-header">{{s.student_id}}</h5>
+            <p class="card-text my-3">{{s.student_name}}</p>
+            <div class="modal-footer">
+              <form method="get">
+                <button id="pr{{s.student_id}}" class="btn btn-success" name="attendance" value="pr-{{s.student_id}}">Present</button>
+                <button class="btn btn-danger" id="ab{{s.student_id}}" name="attendance" value="ab-{{s.student_id}}">Absent</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  {% endfor %}
+
+</div>
+  {% for st in attstudents %}
+      <table class="table table-striped table-dark">
+        <tbody>
+          <tr>
+            <th scope="row">{{st.student_id}}</th>
+            {% if st.attendance == 'Present' %}
+              <td class="bg-success">{{st.attendance}}</td>
+            {% else %}
+              <td class="bg-danger">{{st.attendance}}</td>
+            {% endif %}
+          </tr>
+        </tbody>
+      </table>
+  {% endfor %} 
+  <a role="button" class="btn btn-outline-danger my-3" href="/">Done and Save the Changes</a>
+
+{% endblock %}

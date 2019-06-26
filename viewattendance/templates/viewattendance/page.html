@@ -1,0 +1,71 @@
+{% extends 'mainattendance/basic.html' %}
+
+{% block title %} Attendance of  {% endblock %}
+
+{% block body %}
+	<!-- <div class="container">
+		{% for i in batchs %}
+      <form method="get">
+        <div class="row">	
+			   <button type="submit" class="btn btn-primary mt-3" id="{{i.batch}} on {{i.date}}" name="batch" value="{{i.batch}} on {{i.date|date:'Y-m-d'}}">
+          {{i.batch}} on {{i.date|date:'Y-m-d'}}
+        </button>
+        </div>
+      </form>
+      <ul></ul>
+		{% endfor %}
+    {% if xattendance == None %}
+      <div></div>
+    {% else %}
+      <table class="my-5 table table-bordered  table-responsive-md table-dark">
+          <thead>
+            <tr>
+              <th scope="text-center col">ID</th>
+              <th scope="text-center col">{{date}}</th>
+            </tr>
+          </thead>
+          {% for s in xattendance %}  
+          <tbody>
+            <tr>
+              <th scope="row">{{s.student_id}}</th>
+              <th scope="row">{{s.attendance}}</th>
+            </tr>
+          </tbody>
+          {% endfor %}
+      </table>
+    {% endif %}
+	</div> -->
+  <div class="container">
+    <div class="row">
+    {% for i in batchs %}
+      <form method="get">
+        <div class="row"> 
+         <button type="submit" class="btn btn-primary mt-3" id="{{i.batch_id}}" name="batch" value="{{i.batch_id}}">
+          {{i.batch_id}}
+        </button>
+        </div>
+      </form>
+      <ul></ul>
+    {% endfor %}
+    
+    {% if xattendance == Null %}
+        <div></div>
+      {% else %}
+        <table class="my-5 table table-bordered  table-responsive-md table-dark">
+            <thead>
+              <tr>
+                <th scope="text-center col">ID</th>
+                <th scope="text-center col"></th>
+              </tr>
+            </thead>
+            {% for s in xattendance %}  
+            <tbody>
+              <tr>
+                <th scope="row">{{s.student_id}}</th>
+                <th scope="row">{{s.attendance}}</th>
+              </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+      {% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'mainattendance/basic.html' %}
+
+{% block css %}
+	body .text-plain{
+		width: 65%;
+	}
+
+	body .Line {
+    width: 40px;
+    height: 6px;
+    background-color: #0000ff;
+    margin-top: 50px ;
+	}
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<div class="Line"></div>
+		<h2 class="mt-1">Attendance Management</h2>
+		<h1 class=" text-primary">When efficiency and efficacy matter</h1>
+		<h5 class="text-plain">Attendance processing is effective only when it's real-time. Students and Faculties need to fix issues ASAP and not at the end of the month.<br> Attendance management system handles all aspects with simplicity and efficiency. You experience bliss when attendance, leave (vacation) and payroll are seamlessly integrated.</h5>
+
+		<a role="button" class="btn btn-outline-primary" href="/mainattendance">Take Attendance</a>
+		<a role="button" class="btn btn-outline-danger" href="/viewattendance">View Attendance</a>
+	</div>
+{% endblock %}
