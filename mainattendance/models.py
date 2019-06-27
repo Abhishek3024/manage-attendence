@@ -47,8 +47,9 @@ class StudentAttendance(models.Model):
 	
 	# class Meta:
 	# 	unique_together = ("student_id","date","attendance")
-
-	student_id = models.CharField(primary_key = True ,max_length = 10)
+	
+	attendence_id = models.CharField(primary_key = True)
+	student_id = models.CharField(max_length = 10)
 	attendance = models.CharField(max_length = 10)
 	date = models.DateField()
 
